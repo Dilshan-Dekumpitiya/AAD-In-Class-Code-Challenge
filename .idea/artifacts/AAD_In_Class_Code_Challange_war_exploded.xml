@@ -16,6 +16,7 @@
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: jakarta.ws.rs:jakarta.ws.rs-api:2.1.6" />
+          <element id="library" level="project" name="Maven: jakarta.json.bind:jakarta.json.bind-api:2.0.0-RC1" />
         </element>
       </element>
       <element id="directory" name="META-INF">

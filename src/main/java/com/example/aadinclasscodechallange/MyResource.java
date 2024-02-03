@@ -1,25 +1,32 @@
 package com.example.aadinclasscodechallange;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.HeaderParam;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.core.Response;
 
-@Path("/api")
-public class MyResource {
-    @GET
-    @Path("/endpoint/{value}")
-    public Response handleEndpoint(
-            @PathParam("value") String pathParamValue,
-            @HeaderParam("custom-header1") String customHeader1,
-            @HeaderParam("custom-header2") String customHeader2) {
+import jakarta.json.bind.Jsonb;
+import jakarta.json.bind.JsonbBuilder;
 
-        // Handle the endpoint logic here
-        String result = "Path Param Value: " + pathParamValue + "\n"
-                + "Custom Header 1: " + customHeader1 + "\n"
-                + "Custom Header 2: " + customHeader2;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
-        return Response.status(Response.Status.OK).entity(result).build();
+@WebServlet(name = "test", value = "/test")
+public class MyResource extends HttpServlet {
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String name = req.getParameter("name");
+        String age = req.getParameter("age");
+
+        System.out.println(name);
+        System.out.println(age);
+
+        if(req.getContentType() == null || !req.getContentType().toLowerCase().startsWith("application/json")){
+            resp.sendError(HttpServletResponse.SC_BAD_REQUEST);
+        }else {
+            Jsonb jsonb = JsonbBuilder.create();
+            MyResource myResource = jsonb.fromJson(req.getReader(), MyResource.class);
+        }
     }
+
 }

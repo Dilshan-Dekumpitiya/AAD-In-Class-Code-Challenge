@@ -1,0 +1,16 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="AAD-In-Class-Code-Challange:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <exploded>false</exploded>
+        <module>AAD-In-Class-Code-Challange</module>
+        <packaging>war</packaging>
+        <unpackNestedArchives>false</unpackNestedArchives>
+      </options>
+    </properties>
+    <root id="archive" name="AAD-In-Class-Code-Challange-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="AAD-In-Class-Code-Challange:war exploded" />
+    </root>
+  </artifact>
+</component>
